@@ -1,4 +1,4 @@
-package Breeds;
+package testRunner;
 
 import com.intuit.karate.Results;
 import com.intuit.karate.Runner;
@@ -13,17 +13,47 @@ import java.util.List;
 import com.intuit.karate.junit5.Karate;
 
 
-public class breedsRunner {
+public class DogRunner {
 
     @Karate.Test
     public Karate testBreeds(){
         Results results =
-                Runner.path("classpath:Breeds")
+                Runner.path("classpath:Features")
                 .tags("~@ignore")
                 .outputCucumberJson(true)
                 .parallel(5);
         generateReport(results.getReportDir());
         return Karate.run("breeds").relativeTo(getClass());
+    }
+    @Karate.Test
+    public Karate testCategories(){
+        Results results =
+                Runner.path("classpath:Features")
+                        .tags("~@ignore")
+                        .outputCucumberJson(true)
+                        .parallel(5);
+        generateReport(results.getReportDir());
+        return Karate.run("categories").relativeTo(getClass());
+    }
+    @Karate.Test
+    public Karate testFavourites(){
+        Results results =
+                Runner.path("classpath:Features")
+                        .tags("~@ignore")
+                        .outputCucumberJson(true)
+                        .parallel(5);
+        generateReport(results.getReportDir());
+        return Karate.run("favourites").relativeTo(getClass());
+    }
+    @Karate.Test
+    public Karate testVotes(){
+        Results results =
+                Runner.path("classpath:Features")
+                        .tags("~@ignore")
+                        .outputCucumberJson(true)
+                        .parallel(5);
+        generateReport(results.getReportDir());
+        return Karate.run("votes").relativeTo(getClass());
     }
 
     public static void generateReport(String karateOutputPath) {

@@ -17,11 +17,12 @@ Feature: A description
   When method get
   Then status 200
 
-#  Scenario: create new breed and get it by id
+
+ Scenario: create new breed and get it by id
   * def breed =
     """
     {
-      "name:" "French bulldog"
+      "name:" "Frenchie"
       }
     """
     Given path 'breeds'
@@ -36,5 +37,16 @@ Feature: A description
     When method get
     Then status 200
     And match response contains breed
+
+  Scenario: get all breeds and then get the 7th breed by id
+    Given path 'breeds'
+    When method get
+    Then status 200
+
+    * def first = response[7]
+
+    Given path 'breeds', first.id
+    When method get
+    Then status 200
 
 
