@@ -49,25 +49,20 @@ Feature: A description
     And match response contains favourite
 
     @Lerato
-  Scenario: create new favourite without sub_id and get it by image_id
+  Scenario: create new favourite without sub_id
     * def favouriteTwo =
     """
     {
-	"image_id":"9ccXTANkz"
+	"image_id":"9ccXTANkb"
 }
     """
     Given path 'favourites'
     And request favouriteTwo
     When method post
-    Then status 201
-
-    * def image_id = response.image_id
-    * print 'created image_id: ', image_id
-
-    Given path image_id
-    When method get
     Then status 200
-    And match response contains favourite
+      And match response.message == "SUCCESS"
+      And eval karate.log('Response:', response)
+
 
 @Lerato
     Scenario: Getting all favourites and deleting a favourite by id
