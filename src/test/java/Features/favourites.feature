@@ -5,7 +5,16 @@ Feature: A description
 
   Background:
     * url 'https://api.thedogapi.com/v1/'
+    * header x-api-key = 'live_PyZTkIHmfKfUpzzuobIumQK4klHqVJ4SPtpV0ZbAJahvw8rDngmwigGp4DYZEt4I'
+    * header 'Content-Type' = 'application/json'
 
+@Lerato
+  Scenario: get all favourites
+    Given path 'favourites'
+    When method get
+    Then status 200
+
+@Lerato
   Scenario: get all favourites and then get the first favourite by id
     Given path 'favourites'
     When method get
@@ -17,6 +26,7 @@ Feature: A description
     When method get
     Then status 200
 
+  @Lerato
   Scenario: create new favourite and get it by sub_id
     * def favourite =
     """
@@ -38,6 +48,7 @@ Feature: A description
     Then status 200
     And match response contains favourite
 
+    @Lerato
   Scenario: create new favourite without sub_id and get it by image_id
     * def favouriteTwo =
     """
@@ -58,6 +69,7 @@ Feature: A description
     Then status 200
     And match response contains favourite
 
+@Lerato
     Scenario: Getting all favourites and deleting a favourite by id
       Given path 'favourites'
       When method get

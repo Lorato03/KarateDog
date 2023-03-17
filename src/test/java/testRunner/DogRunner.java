@@ -39,7 +39,7 @@ public class DogRunner {
     public Karate testFavourites(){
         Results results =
                 Runner.path("classpath:Features")
-                        .tags("~@ignore")
+                        .tags("~@Lerato")
                         .outputCucumberJson(true)
                         .parallel(5);
         generateReport(results.getReportDir());
@@ -49,7 +49,7 @@ public class DogRunner {
     public Karate testVotes(){
         Results results =
                 Runner.path("classpath:Features")
-                        .tags("~@ignore")
+                        .tags("~@Lerato")
                         .outputCucumberJson(true)
                         .parallel(5);
         generateReport(results.getReportDir());

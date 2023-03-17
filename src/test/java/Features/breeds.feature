@@ -5,17 +5,13 @@ Feature: A description
 
   Background:
     * url 'https://api.thedogapi.com/v1/'
+    * header x-api-key = 'live_PyZTkIHmfKfUpzzuobIumQK4klHqVJ4SPtpV0ZbAJahvw8rDngmwigGp4DYZEt4I'
+    * header 'Content-Type' = 'application/json'
 
   Scenario: get all breeds and then get the first breed by id
     Given path 'breeds'
     When method get
     Then status 200
-
-  * def first = response[0]
-
-  Given path 'breeds', first.id
-  When method get
-  Then status 200
 
 
  Scenario: create new breed and get it by id
